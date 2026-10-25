@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Menús</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="6">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 6 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Menús</h2>
+            <p>Un menú es una lista de enlaces con estilo. No necesitas nada nuevo: usas listas, enlaces, <code>display</code> y <code>:hover</code>, y cambias solo la forma de colocarlos.</p>
+
+            <h3>1. Menú horizontal con float</h3>
+            <pre class="codigo"><code>&lt;nav class="menu-h"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Descargas&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Registro&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+.menu-h { background-color: #534AB7; overflow: hidden; }
+.menu-h ul { list-style: none; padding: 0; }
+.menu-h li { float: left; }
+.menu-h a {
+    display: block;
+    padding: 1.2rem 2rem;
+    color: white;
+    text-decoration: none;
+}
+.menu-h a:hover { background-color: #3C3489; }</code></pre>
+            <nav class="menu-h">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Descargas</a></li>
+                    <li><a href="#">Registro</a></li>
+                </ul>
+            </nav>
+            <p>Los <code>li</code> flotan a la izquierda para ponerse en fila, y <code>overflow: hidden</code> en el contenedor evita que se colapse, como viste en la lección 5.</p>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> poner el <code>padding</code> en el <code>li</code> en lugar de en el <code>a</code>. Así solo es clicable el texto. Con <code>display: block</code> y el <code>padding</code> en el enlace, lo es toda la zona.
+            </div>
+
+            <h3>2. Menú vertical</h3>
+            <pre class="codigo"><code>.menu-v { width: 20rem; background-color: #F1EFE8; }
+.menu-v a {
+    display: block;
+    padding: 1rem 1.6rem;
+    color: #2C2C2A;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.menu-v a:hover,
+.menu-v a:active {
+    background-color: #534AB7;
+    color: white;
+}</code></pre>
+            <nav class="menu-v">
+                <a href="#">Principal</a>
+                <a href="#">Descargas</a>
+                <a href="#">Registro</a>
+                <a href="#">Novedades</a>
+            </nav>
+            <p>Un enlace es <code>inline</code> por defecto. Con <code>display: block</code> pasa a ocupar su propia línea, y eso es lo que hace vertical al menú. <code>:active</code> se aplica mientras estás pulsando el enlace.</p>
+
+            <h3>3. Menú con flexbox</h3>
+            <pre class="codigo"><code>.menu-flex { display: flex; background-color: #26215C; }
+.menu-flex a {
+    flex: 1;
+    text-align: center;
+    padding: 1.2rem;
+    color: white;
+    text-decoration: none;
+}
+.menu-flex a:first-child { border-radius: .8rem 0 0 .8rem; }
+.menu-flex a:last-child  { border-radius: 0 .8rem .8rem 0; }
+.menu-flex a:nth-child(even) { background-color: rgba(255, 255, 255, 0.08); }
+.menu-flex a:hover { background-color: #534AB7; }</code></pre>
+            <nav class="menu-flex">
+                <a href="#">Inicio</a>
+                <a href="#">Servicios</a>
+                <a href="#">Galería</a>
+                <a href="#">Contacto</a>
+            </nav>
+            <p><code>display: flex</code> pone los enlaces en fila y <code>flex: 1</code> les reparte el ancho a partes iguales. Las pseudoclases eligen enlaces por su posición: <code>:first-child</code> el primero, <code>:last-child</code> el último y <code>:nth-child(even)</code> los pares.</p>
+
+            <h3>4. Menú con grid</h3>
+            <pre class="codigo"><code>.menu-grid {
+    display: grid;
+    grid-auto-flow: column;
+    gap: .4rem;
+}
+.menu-grid a {
+    text-align: center;
+    padding: 1.2rem;
+    background-color: #CECBF6;
+    color: #26215C;
+    text-decoration: none;
+}
+.menu-grid a:hover { background-color: #534AB7; color: white; }</code></pre>
+            <nav class="menu-grid">
+                <a href="#">Inicio</a>
+                <a href="#">Galería</a>
+                <a href="#">Ejemplos</a>
+                <a href="#">Contacto</a>
+            </nav>
+            <p><code>grid-auto-flow: column</code> hace que cada enlace ocupe una columna nueva. Cambiando a <code>row</code> en pantallas pequeñas pasa a vertical.</p>
+
+            <div class="paginacion">
+                <a href="05-cajas-flotantes.html" class="boton">Anterior</a>
+                <a href="07-listas.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

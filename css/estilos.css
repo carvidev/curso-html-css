@@ -1,0 +1,584 @@
+* { /* Reinicia los márgenes y hace que el ancho incluya el borde */
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+html { /* En html hace que 1rem sea 10px, y 1.6rem en body deja el texto en 16px */
+    font-size: 62.5%;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    font-size: 1.6rem;
+}
+
+/* Header - cabecera y barra de prograso */
+.cabecera {
+    background-color: #534AB7;
+    color: white;
+    padding: 2.4rem 3.2rem;
+}
+
+.fila {
+    display: flex; /* Pone los hijos de .fila en horizontal */
+    justify-content: space-between; /* manda el título a un lado y la etiqueta al otro */
+    align-items: center; /* Los centra en vertical */
+    flex-wrap: wrap; /* Deja que salten de línea si la pantalla es estrecha */
+    gap: 1.2rem;
+}
+
+.cabecera h1 {
+    font-size: 2.8rem;
+}
+
+.etiqueta {
+    background-color: #EEEDFE;
+    color: #3C3489;
+    padding: 0.6rem 1.6rem;
+    border-radius: 1.6rem; /* Redondea las esquinas */
+    font-size: 1.5rem;
+}
+
+.progreso {
+    height: 0.8rem;
+    background-color: #3C3489;
+    border-radius: 0.4rem;
+    margin-top: 1.6rem;
+}
+
+.barra {
+    width: 5%; /* Es el progreso */
+    height: 100%; /* Para llenar la altura del carril */
+    background-color: #AFA9EC;
+    border-radius: 0.4rem;
+}
+
+/* Cuerpo de la página - menú lateral y contenido principal*/
+.contenedor {
+    display: grid;
+    grid-template-columns: 26rem minmax(0, 1fr); /* Crea dos columnas: el menú de la barra lateral de 26rem (260px) y el contenido principal ocupando el resto. minmax(0, 1fr) evita que un contenido ancho desborde la columna */
+    min-height: 100vh; /* Hace que el contenedor ocupe al menos toda la altura de la pantalla, y así el menú gris llega hasta abajo */
+}
+
+/* Aside o menú lateral */
+.menu {
+    background-color: #F1EFE8;
+    padding: 2.4rem 1.6rem;
+}
+
+.menu h2 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #5F5E5A;
+    margin: 1.6rem 0.8rem 0.6rem;
+}
+
+.menu ul {
+    list-style: none; /* Quita las puntos de la lista */
+    padding: 0;
+}
+
+.menu a {
+    display: block; /* En los enlaces hace que toda la fila sea clicable, no solo el texto */
+    padding: 0.8rem;
+    color: #2C2C2A;
+    text-decoration: none;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+}
+
+.menu a:hover { /* Cambia el fondo al pasar el ratón */
+    background-color: #EEEDFE;
+}
+
+.menu a.activa { /* Pinta la lección actual con el color principal */
+    background-color: #534AB7;
+    color: white;
+}
+
+/* Main o contenido principal */
+.contenido {
+    padding: 3.2rem 4rem;
+}
+
+.contenido h2 {
+    font-size: 3.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.contenido h3 {
+    font-size: 2.2rem;
+    margin: 3.2rem 0 0.8rem;
+}
+
+.contenido .codigo {
+    margin-bottom: 1.6rem;
+}
+
+.contenido p {
+    font-size: 1.7rem;
+    line-height: 1.6;
+}
+
+/* Contenido de la lección */
+.columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr)); /* Crea tantas columnas de al menos 260px como quepan. En pantalla ancha, código y resultado van lado a lado, y en estrecha se apilan solos, sin media queries */
+    gap: 2rem;
+    margin-top: 2.4rem;
+}
+
+.contenido .rotulo { /* Ponemos juntas las 2 clases, así gana en especificidad a .contenido p, que tiene el tamaño de texto general */
+    font-size: 1.3rem;
+    color: #5F5E5A;
+    margin-bottom: 0.6rem;
+}
+
+.codigo { /* En el código añade scroll horizontal si una línea es muy larga, en lugar de romper el diseño */
+    background-color: #26215C;
+    color: #CECBF6;
+    border-radius: 0.8rem;
+    padding: 1.6rem;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    overflow-x: auto;
+}
+
+.resultado {
+    border: 1px solid #D3D1C7;
+    border-radius: 0.8rem;
+    padding: 1.6rem;
+}
+
+.resultado h1 {
+    font-size: 2.4rem;
+}
+
+.resultado p {
+    font-size: 1.6rem;
+}
+
+/* .aviso reúne lo común (esquinas, relleno, margen) y .truco y .error solo añaden el color. Es una forma limpia de reutilizar estilos. */
+.aviso {
+    border-radius: 0.8rem;
+    padding: 1.4rem 1.6rem;
+    font-size: 1.6rem;
+    margin-top: 1.6rem;
+}
+
+.aviso code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+}
+
+.truco {
+    background-color: #FAEEDA;
+    color: #412402;
+}
+
+.error {
+    background-color: #FAECE7;
+    color: #4A1B0C;
+}
+
+/* Paginación - botones anterior/siguiente */
+.paginacion {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3.2rem;
+}
+
+.boton {
+    display: inline-flex;
+    /* inline-flex + align-items: center centra el texto en vertical */
+    align-items: center;
+    min-height: 4.4rem; /* (44px) da un tamaño cómodo para tocar con el dedo en version móvil*/
+    padding: 0 2.4rem;
+    border: 1px solid #B4B2A9;
+    border-radius: 0.6rem;
+    color: #2C2C2A;
+    text-decoration: none;
+    font-size: 1.6rem;
+    transition: background-color 0.2s;
+}
+
+.boton:hover {
+    background-color: #EEEDFE;
+}
+
+.boton.primario { /* Sin espacio entre las clases para seleccionar elementos que tienen ambas clases a la vez */
+    background-color: #534AB7;
+    border-color: #534AB7;
+    color: white;
+    margin-left: auto; /* Empuja el botón a la derecha, aunque sea el único hijo */
+}
+
+.boton.primario:hover { /* Anima el cambio de color del :hover en lugar de hacerlo de golpe */
+    background-color: #26215C;
+}
+
+/* Animaciones */
+/* @keyframes define los pasos de la animación. from es el estado inicial (invisible y 16px más abajo) y to el final */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(1.6rem); /* Mueve el elemento sin alterar el resto de la maquetación */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contenido {
+    animation: aparecer 0.5s ease-out; /* Aplica esa animación al contenido: nombre, duración y curva. ease-out empieza rápido y frena al final */
+}
+
+/* Imágenes */
+.contenido figure {
+    margin: 1.6rem 0;
+}
+
+.contenido figure img {
+    max-width: 100%; /* Solo se aplica a las imágenes dentro de figure*/
+    height: auto;
+    border-radius: 0.8rem;
+}
+
+.contenido figcaption {
+    font-size: 1.4rem;
+    color: #5F5E5A;
+    margin-top: 0.6rem;
+}
+
+.contenido a {
+    color: #534AB7;
+}
+
+.contenido a.boton {
+    color: #2C2C2A;
+}
+
+.contenido a.boton.primario {
+    color: white;
+}
+
+/* Estilos cjas flotantes */
+.izquierda { float: left; }
+.derecha { float: right; }
+.limpiar { overflow: hidden; }
+.aparte { clear: both; }
+
+.demo {
+    border: 2px solid #534AB7;
+    border-radius: 0.8rem;
+    padding: 1.2rem;
+    margin-bottom: 1.6rem;
+}
+
+.demo-caja {
+    background-color: #9FE1CB;
+    color: #085041;
+    padding: 1.6rem 2.4rem;
+    margin: 0 0.8rem 0 0;
+    border-radius: 0.6rem;
+}
+
+.demo-pag {
+    border: 1px solid #CCC;
+    background-color: #e0e0e0;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+/* Menú horizontal con float */
+.menu-h {
+    background-color: #534AB7;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    margin: 1.6rem 0;
+}
+
+.menu-h ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-h li {
+    float: left;
+}
+
+.contenido .menu-h a {
+    display: block;
+    padding: 1.2rem 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+.contenido .menu-h a:hover {
+    background-color: #3C3489;
+}
+
+/* Menú vertical */
+.menu-v {
+    width: 20rem;
+    background-color: #F1EFE8;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    margin: 1.6rem 0;
+}
+
+.contenido .menu-v a {
+    display: block;
+    padding: 1rem 1.6rem;
+    color: #2C2C2A;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}
+
+.contenido .menu-v a:hover, 
+.contenido .menu-v a:active {
+    background-color: #534AB7;
+    color: white;
+}
+
+/* Menú flexbox */
+.menu-flex {
+    display: flex;
+    background-color: #26215C;
+    border-radius: 0.8rem;
+    margin: 1.6rem 0;
+}
+
+.contenido .menu-flex a {
+    flex: 1; /* equivale a escribir flex-grow: 1, flex-shrink: 1 y flex-basis: 0%. Hace que los elementos hijos de un contenedor flexible crezcan y se encojan de forma equitativa, repartiendo el espacio disponible en partes iguales sin importar su contenido inicial */
+    text-align: center;
+    padding: 1.2rem;
+    color: white;
+    text-decoration: none;
+}
+
+.contenido .menu-flex a:first-child {
+    border-radius: 0.8rem 0 0 0.8rem;
+}
+
+.contenido .menu-flex a:last-child {
+    border-radius: 0 0.8rem 0.8rem 0;
+}
+
+.contenido .menu-flex a:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.contenido .menu-flex a:hover {
+    background-color: #534AB7;
+}
+
+/* Menú grid */
+.menu-grid {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.4rem;
+    margin: 1.6rem 0;
+}
+
+.contenido .menu-grid a {
+    text-align: center;
+    padding: 1.2rem;
+    background-color: #CECBF6;
+    color: #26215C;
+    text-decoration: none;
+    border-radius: 0.6rem;
+}
+
+.contenido .menu-grid a:hover {
+    background-color: #534AB7;
+    color: white;
+}
+
+/* Listas */
+.contenido ul,
+.contenido ol {
+    padding-left: 2.4rem;
+}
+
+.contenido ol ol { /* selecciona un ol dentro de otro ol, y le da letras en vez de números. Es la idea de "subapartados con otro formato" */
+    list-style-type: lower-alpha;
+}
+
+.contenido li,
+.contenido dt,
+.contenido dd {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.contenido dt {
+    font-weight: bold;
+    margin-top: 0.8rem;
+}
+
+.contenido dd {
+    margin-left: 2.4rem;
+}
+
+.romanos {
+    list-style-type: upper-roman;
+}
+
+.contenido .iconos {
+    padding-left: 0;
+}
+
+.iconos li {
+    list-style-type: none;
+    background-image: url(../img/check.svg);
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 0.4rem 0 0.4rem 3rem;
+}
+
+/* Galería y efectos */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin: 1.6rem 0;
+}
+
+.foto {
+    overflow: hidden;
+    border-radius: 0.8rem;
+}
+
+.foto img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.4s, filter 0.4s;
+}
+
+.zoom img:hover {
+    transform: scale(1.15);
+}
+
+.gris img {
+    filter: grayscale(100%);
+}
+
+.gris img:hover {
+    filter: grayscale(0);
+}
+
+.giro img:hover {
+    transform: rotate(5deg) scale(1.2);
+}
+
+/* Display y plantilla semántica */
+.d-caja {
+    background-color: #CECBF6;
+    color: #26215C;
+    padding: 0.8rem 1.2rem;
+    margin: 0.4rem;
+    border-radius: 0.4rem;
+    font-size: 1.5rem;
+}
+
+.d-block { display: block; width: 20rem; }
+.d-inline { display: inline; width: 20rem; }
+.d-inline-block { display: inline-block; width: 20rem; }
+
+.d-flex {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.d-flex-col {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.d-ancho {
+    flex: 1;
+}
+
+.d-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+}
+
+.plantilla {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    grid-template-areas: /* dibuja la rejilla con palabras. Cada zona recibe un nombre y luego se asigna con grid-area */ 
+        "cab cab"
+        "nav pri"
+        "pie pie";
+    gap: 0.8rem;
+    margin: 1.6rem 0;
+}
+
+.plantilla div {
+    padding: 1.6rem;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.p-cab { grid-area: cab; background-color: #CECBF6; color: #26215C; }
+.p-nav { grid-area: nav; background-color: #9FE1CB; color: #085041; }
+.p-main { grid-area: pri; background-color: #FAEEDA; color: #412402; min-height: 10rem; }
+.p-pie { grid-area: pie; background-color: #F5C4B3; color: #712B13; }
+
+
+/* Media queries - diseño responsive */
+@media (max-width: 700px) { /* Estas reglas solo se aplican cuando la ventana mide 700px o menos de ancho.
+Van al final por la cascada: si dos reglas tienen la misma especificidad, gana la última. Si la pones antes de .contenedor, no tendría efecto.
+En media queries usa px. El rem allí no depende de nuestro 62.5%, sino del tamaño de letra por defecto del navegador, y se descuadra */
+    .contenedor {
+        grid-template-columns: 1fr; /* El grid pasa a una sola columna, así que el menú queda arriba y el contenido debajo */
+    }
+
+    .cabecera {
+        padding: 2rem 1.6rem;
+    }
+
+    .menu {
+        padding: 1.6rem;
+    }
+
+    .contenido {
+        padding: 2.4rem 1.6rem;
+    }
+
+    .menu-grid {
+    grid-auto-flow: row;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plantilla {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "cab"
+            "nav"
+            "pri"
+            "pie";
+    }
+}
+
+@media (prefers-reduced-motion: reduce) { /* Desactiva la animación a quien lo tenga configurado en su sistema, por accesibilidad */
+    .contenido {
+        animation: none;
+    }
+}

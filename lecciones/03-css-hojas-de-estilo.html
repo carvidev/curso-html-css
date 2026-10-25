@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>CSS: hojas de estilo</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="3">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 3 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>CSS: hojas de estilo</h2>
+            <p>CSS significa Hojas de Estilo en Cascada. Con HTML defines la estructura de la página y con CSS decides cómo se ve: colores, tamaños, espacios y posición.</p>
+
+            <h3>Cómo se escribe una regla</h3>
+            <pre class="codigo"><code>selector {
+    propiedad: valor;
+}
+<!--Si escribes una etiqueta <style> real dentro de un <pre>, el navegador la ejecuta en vez de mostrarla-->
+h1 {
+    color: orange;
+    text-align: center;
+}</code></pre>
+            <p>El selector dice a qué elementos se aplica, y entre llaves van las declaraciones: cada propiedad con su valor y un punto y coma al final.</p>
+
+            <h3>Tres formas de aplicar CSS</h3>
+
+            <p class="rotulo">A. Con el atributo style, dentro de la etiqueta</p>
+            <pre class="codigo"><code>&lt;p style="font-family: Arial; font-size: 12px;"&gt;
+    Este texto se ve en Arial de 12 píxeles
+&lt;/p&gt;</code></pre>
+
+            <p class="rotulo">B. Con la etiqueta style, dentro del head</p>
+            <pre class="codigo"><code>&lt;head&gt;
+    &lt;style&gt;
+        h1 { color: #00ff00; }
+        p  { color: rgb(0, 0, 255); }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+            <p class="rotulo">C. Con un fichero independiente enlazado desde el head</p>
+    <pre class="codigo"><code>&lt;head&gt;
+    &lt;link rel="stylesheet" href="css/estilos.css"&gt;
+&lt;/head&gt;</code></pre>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> la opción C es la que usa esta web y la recomendada. Un solo fichero de estilos sirve para todas las páginas, y si cambias un color, cambia en todas.
+            </div>
+
+            <h3>Formas de escribir un color</h3>
+    <pre class="codigo"><code>color: red;                  /* nombre en inglés */
+color: #004433;              /* código hexadecimal */
+color: rgb(23, 56, 123);     /* rojo, verde, azul */
+color: rgba(23, 56, 123, 0.7); /* con transparencia */</code></pre>
+
+            <h3>Selectores de relación</h3>
+    <pre class="codigo"><code>h1 + h2 { color: pink; }   /* un h2 justo después de un h1 */
+h1 ~ h2 { color: pink; }   /* cualquier h2 hermano de un h1 */
+p &gt; span { color: pink; }  /* un span hijo directo de un p */</code></pre>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> abusar de <code>!important</code>. Fuerza una regla por encima de todas las demás y luego es muy difícil de sobrescribir. Úsalo solo en último caso.
+            </div>
+
+            <div class="paginacion">
+                <a href="02-etiquetas-basicas.html" class="boton">Anterior</a>
+                <a href="04-enlaces-imagenes.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

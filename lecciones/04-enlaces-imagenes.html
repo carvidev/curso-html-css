@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Enlaces e imágenes</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="4">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 4 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido" id="inicio">
+            <h2>Enlaces e imágenes</h2>
+            <p>Los enlaces son la esencia de la web: conectan páginas, secciones y recursos. Las imágenes son su parte visual.</p>
+            <p>Salta directo a: <a href="#imagenes">Imágenes</a> · <a href="#mapa">Mapa de imagen</a></p>
+
+            <h3>El enlace básico</h3>
+            <pre class="codigo"><code>&lt;a href="https://www.ejemplo.com"&gt;Visitar Ejemplo&lt;/a&gt;
+
+&lt;a href="https://www.google.com"
+target="_blank"
+rel="noopener noreferrer"&gt;
+Google en pestaña nueva
+&lt;/a&gt;</code></pre>
+            <p>El atributo <code>href</code> es la dirección de destino. Con <code>target="_blank"</code> el enlace se abre en una pestaña nueva, y <code>rel="noopener noreferrer"</code> lo hace más seguro.</p>
+
+            <h3>Enlaces internos y rutas relativas</h3>
+            <pre class="codigo"><code>mi-sitio/
+├── index.html
+├── css/
+└── lecciones/
+    └── enlaces-imagenes.html
+
+&lt;!-- Desde index.html --&gt;
+&lt;a href="lecciones/enlaces-imagenes.html"&gt;Lección 4&lt;/a&gt;
+
+&lt;!-- Desde lecciones/enlaces-imagenes.html --&gt;
+&lt;a href="../index.html"&gt;Volver al inicio&lt;/a&gt;</code></pre>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> <code>../</code> sube una carpeta. Es lo que se usa en el <code>link</code> del CSS de cada lección de esta págian web.
+            </div>
+
+            <h3>Anclas dentro de la misma página</h3>
+            <pre class="codigo"><code>&lt;a href="#imagenes"&gt;Ir a imágenes&lt;/a&gt;
+&lt;h3 id="imagenes"&gt;Imágenes&lt;/h3&gt;
+
+&lt;a href="#"&gt;Subir arriba&lt;/a&gt;</code></pre>
+            <p>El <code>id</code> del destino y el <code>#</code> del enlace tienen que coincidir. Con <code>href="#"</code> vuelves arriba del todo.</p>
+
+            <h3>Enlaces de comunicación</h3>
+            <pre class="codigo"><code>&lt;a href="mailto:tu@correo.com"&gt;Enviar email&lt;/a&gt;
+&lt;a href="mailto:tu@correo.com?subject=Duda%20HTML"&gt;Email con asunto&lt;/a&gt;
+&lt;a href="tel:+34600000000"&gt;Llamar&lt;/a&gt;</code></pre>
+
+            <h3 id="imagenes">Imágenes</h3>
+            <pre class="codigo"><code>&lt;img src="../img/paisaje.jpg" alt="Paisaje de montaña al atardecer"&gt;</code></pre>
+            <figure>
+                <img src="../img/paisaje.jpg" alt="Paisaje de montaña al atardecer">
+                <figcaption>Imagen 1: un paisaje de ejemplo.</figcaption>
+            </figure>
+            <p><code>src</code> es la ruta de la imagen (si la imagen está en una carpeta primero va <code>../)</code>. <code>alt</code> es el texto alternativo: lo leen los lectores de pantalla y se muestra si la imagen no carga. <code>figure</code> y <code>figcaption</code> añaden una leyenda a la foto.</p>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> olvidar el <code>alt</code> o poner algo como «imagen». Describe qué se ve. Si la imagen es solo decorativa, usa <code>alt=""</code>.
+            </div>
+
+            <h3 id="mapa">Mapa de imagen</h3>
+            <p>Un mapa de imagen es una imagen con zonas invisibles clicables, cada una con su enlace.</p>
+            <pre class="codigo"><code>&lt;map name="zonas"&gt;
+    &lt;area shape="circle" coords="100,100,80"
+        href="css-hojas-de-estilo.html" alt="Lección 3"&gt;
+    &lt;area shape="rect" coords="220,20,380,180"
+        href="etiquetas-basicas.html" alt="Lección 2"&gt;
+&lt;/map&gt;
+&lt;img src="../img/paisaje.jpg" width="400" height="200"
+    usemap="#zonas" alt="Mapa con dos zonas"&gt;</code></pre>
+            <img src="../img/paisaje.jpg" width="400" height="200" usemap="#zonas" alt="Mapa con dos zonas">
+            <map name="zonas"> <!--El mapa de imagen se hace con <map> + <area>, y la imagen se conecta con usemap="#zonas", que coincide con name="zonas"-->
+                <area shape="circle" coords="100,100,80" href="css-hojas-de-estilo.html" alt="Lección 3">
+                <area shape="rect" coords="220,20,380,180" href="etiquetas-basicas.html" alt="Lección 2">
+            </map>
+            <p><code>circle</code> usa el centro y el radio (<code>x,y,radio</code>). <code>rect</code> usa dos esquinas (<code>x1,y1,x2,y2</code>). Las coordenadas se miden en píxeles desde la esquina superior izquierda.</p>
+
+            <p><a href="#inicio">Subir arriba</a></p>
+
+            <div class="paginacion">
+                <a href="03-css-hojas-de-estilo.html" class="boton">Anterior</a>
+                <a href="05-cajas-flotantes.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

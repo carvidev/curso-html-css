@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Galería, efectos y favicon</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="8">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 8 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Galería, efectos y favicon</h2>
+            <p>Una galería de imágenes es el uso más típico de CSS Grid: una rejilla de filas y columnas donde colocas fotos, vídeos, textos o bloques.</p>
+
+            <h3>La galería con grid</h3>
+            <pre class="codigo"><code>&lt;div class="galeria"&gt;
+    &lt;div class="foto"&gt;&lt;img src="../img/paisaje.jpg" alt="Paisaje"&gt;&lt;/div&gt;
+    &lt;div class="foto"&gt;&lt;img src="../img/paisaje.jpg" alt="Paisaje"&gt;&lt;/div&gt;
+    &lt;div class="foto"&gt;&lt;img src="../img/paisaje.jpg" alt="Paisaje"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+.foto img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}</code></pre>
+            <p><code>repeat(3, 1fr)</code> crea tres columnas iguales y <code>gap</code> deja hueco entre ellas. Con <code>aspect-ratio</code> y <code>object-fit: cover</code> todas las fotos tienen la misma proporción aunque el original sea distinto, recortándose sin deformarse.</p>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> para que una celda ocupe más sitio, usa <code>grid-column: span 2;</code> (dos columnas) o <code>grid-row: span 2;</code> (dos filas).
+            </div>
+
+            <h3>Efectos al pasar el ratón</h3>
+            <pre class="codigo"><code>.foto { overflow: hidden; border-radius: .8rem; }
+.foto img { transition: transform .4s, filter .4s; }
+
+/* Efecto 1: zoom */
+.zoom img:hover { transform: scale(1.15); }
+
+/* Efecto 2: de gris a color */
+.gris img { filter: grayscale(100%); }
+.gris img:hover { filter: grayscale(0); }
+
+/* Efecto 3: giro */
+.giro img:hover { transform: rotate(5deg) scale(1.2); }</code></pre>
+
+            <div class="galeria">
+                <div class="foto zoom"><img src="../img/paisaje.jpg" alt="Paisaje con efecto zoom"></div>
+                <div class="foto zoom"><img src="../img/paisaje1.jpg" alt="Paisaje con efecto zoom"></div>
+                <div class="foto gris"><img src="../img/paisaje2.jpg" alt="Paisaje con efecto de gris a color"></div>
+                <div class="foto gris"><img src="../img/paisaje3.jpg" alt="Paisaje con efecto de gris a color"></div>
+                <div class="foto giro"><img src="../img/paisaje4.jpg" alt="Paisaje con efecto de giro"></div>
+                <div class="foto giro"><img src="../img/paisaje5.jpg" alt="Paisaje con efecto de giro"></div>
+            </div>
+
+            <p>Tres piezas se combinan en cada efecto:</p>
+            <ul>
+                <li><code>transition</code> anima el cambio en lugar de hacerlo de golpe. Indicas qué propiedades y cuánto dura.</li>
+                <li><code>transform</code> mueve, escala o gira el elemento (<code>scale</code>, <code>rotate</code>, <code>translate</code>).</li>
+                <li><code>filter</code> aplica efectos visuales como <code>grayscale</code>, <code>blur</code> o <code>brightness</code>.</li>
+            </ul>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> escalar una imagen sin <code>overflow: hidden</code> en su contenedor. Al crecer se sale de la celda y tapa a las vecinas.
+            </div>
+
+            <h3>El favicon</h3>
+            <p>El favicon es el icono que aparece en la pestaña del navegador. Se enlaza desde el <code>head</code> de cada página:</p>
+            <pre class="codigo"><code>&lt;!-- desde index.html --&gt;
+&lt;link rel="icon" href="img/favicon.svg" type="image/svg+xml"&gt;
+
+&lt;!-- desde lecciones/ --&gt;
+&lt;link rel="icon" href="../img/favicon.svg" type="image/svg+xml"&gt;</code></pre>
+            <p>Suele tener un tamaño pequeño: 32x32, 64x64 o hasta 512x512 píxeles. Puede ser <code>.png</code>, <code>.ico</code> o <code>.svg</code>. Los PDF muestran <code>type="image/jpeg"</code> y <code>rel="shortcut icon"</code>, pero hoy basta con <code>rel="icon"</code>.</p>
+
+            <div class="paginacion">
+                <a href="07-listas.html" class="boton">Anterior</a>
+                <a href="09-display-plantilla.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

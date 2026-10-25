@@ -1,0 +1,102 @@
+<!DOCTYPE html> <!--Va siempre primero y declara que es HTML5.-->
+<html lang="es"> <!--Indica el idioma de la página-->
+<head>
+    <meta charset="UTF-8"> <!--Hace que se vean bien las tildes, la ñ, emojis, etc-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--"viewport" hace que la web se adapte al móvil-->
+    <title>Aprende HTML y CSS</title>
+    <link rel="stylesheet" href="css/estilos.css"> <!--Enlaza el CSS-->
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <script defer src="js/main.js"></script> <!--Enlaza el JavaScript, ponemos defer para que cargue despues del contenido de la página y no hay errores-->
+</head>
+<body data-leccion="1">
+
+    <header class="cabecera"> <!--Indica que es la cabecera de la página-->
+        <div class="fila"> <!--Agrupa el título y la etiqueta para poder ponerlos en la misma línea-->
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 1 de 22</span>
+        </div>
+        <div class="progreso"> <!--.progreso es el carril y .barra es la parte rellena. La barra va dentro del carril, y su ancho dirá cuánto llevas del curso-->
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+       <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="index.html">1. Qué es HTML</a></li>
+                <li><a href="lecciones/02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="lecciones/03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="lecciones/04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="/lecciones/05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="/lecciones/06-menus.html">6. Menús</a></li>
+                <li><a href="/lecciones/07-listas.html">7. Listas</a></li>
+                <li><a href="/lecciones/08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="/lecciones/09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Qué es HTML</h2>
+            <p>HTML son las siglas de Hyper Text Markup Language. Es el lenguaje con el que se escriben las páginas web.</p>
+
+            <div class="columnas">
+                <div>
+                    <p class="rotulo">Código HTML</p>
+                    <!--<pre> respeta los saltos de línea y los espacios tal como los escribes,
+                    <code> indica que es código-->
+                    <pre class="codigo"><code>&lt;h1&gt;Hola mundo&lt;/h1&gt;
+&lt;p&gt;Mi primera página&lt;/p&gt;</code></pre>
+<!--&lt; y &gt;. Son caracteres especiales(< y >). Si escribes <h1> a pelo dentro del bloque, el navegador lo interpreta como una etiqueta real en vez de mostrarlo como texto-->
+                </div>
+                <div>
+                    <p class="rotulo">Resultado</p>
+                    <div class="resultado">
+                        <h1>Hola mundo</h1>
+                        <p>Mi primera página</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> en VS Code escribe <code>!</code> y pulsa Tab para generar la plantilla base.
+            </div>
+            <div class="aviso error">
+                <strong>Error común:</strong> olvidar cerrar una etiqueta. Cada <code>&lt;p&gt;</code> necesita su <code>&lt;/p&gt;</code>.
+            </div>
+
+            <div class="paginacion">
+                <!--Son enlaces a y no button, porque navegan a otra página un button es para acciones-->
+                <a href="lecciones/02-etiquetas-basicas.html" class="boton primario">Siguiente</a>
+                <!--Esta es la primera lección, así que solo lleva "Siguiente", en las lecciones intermedias añadiremos también <a href="#" class="boton">Anterior</a> para poder ir atrás-->
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

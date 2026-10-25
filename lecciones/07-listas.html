@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Listas</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="7">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 7 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Listas</h2>
+            <p>Hay tres tipos de listas en HTML: ordenadas (numeradas), desordenadas (con viñetas) y de definición.</p>
+
+            <h3>Lista ordenada</h3>
+            <div class="columnas">
+                <div>
+                    <p class="rotulo">Código</p>
+                    <pre class="codigo"><code>&lt;ol&gt;
+    &lt;li&gt;España
+        &lt;ol&gt;
+            &lt;li&gt;Andalucía&lt;/li&gt;
+            &lt;li&gt;Madrid&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Francia&lt;/li&gt;
+    &lt;li&gt;Italia&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+                <div>
+                    <p class="rotulo">Resultado</p>
+                    <div class="resultado">
+                        <ol>
+                            <li>España
+                                <ol>
+                                    <li>Andalucía</li>
+                                    <li>Madrid</li>
+                                </ol>
+                            </li>
+                            <li>Francia</li>
+                            <li>Italia</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <p>Para anidar una lista, el <code>ol</code> interior va <strong>dentro</strong> del <code>li</code> al que pertenece, no suelto entre dos <code>li</code>.</p>
+            <pre class="codigo"><code>&lt;ol start="5"&gt;       &lt;!-- empieza a contar en 5 --&gt;
+    &lt;li&gt;Quinto&lt;/li&gt;
+    &lt;li value="10"&gt;Décimo&lt;/li&gt;   &lt;!-- este vale 10 --&gt;
+&lt;/ol&gt;</code></pre>
+
+            <h3>Lista desordenada</h3>
+            <div class="columnas">
+                <div>
+                    <p class="rotulo">Código</p>
+                    <pre class="codigo"><code>&lt;ul&gt;
+    &lt;li&gt;Procesador&lt;/li&gt;
+    &lt;li&gt;Memoria RAM&lt;/li&gt;
+    &lt;li&gt;Disco SSD&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+                <div>
+                    <p class="rotulo">Resultado</p>
+                    <div class="resultado">
+                        <ul>
+                            <li>Procesador</li>
+                            <li>Memoria RAM</li>
+                            <li>Disco SSD</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Lista de definición</h3>
+            <div class="columnas">
+                <div>
+                    <p class="rotulo">Código</p>
+                    <pre class="codigo"><code>&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;Lenguaje de marcado de hipertexto&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Hojas de estilo para dar diseño&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+                <div>
+                    <p class="rotulo">Resultado</p>
+                    <div class="resultado">
+                        <dl>
+                            <dt>HTML</dt>
+                            <dd>Lenguaje de marcado de hipertexto</dd>
+                            <dt>CSS</dt>
+                            <dd>Hojas de estilo para dar diseño</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <p><code>dt</code> es el término y <code>dd</code> su descripción.</p>
+
+            <h3>Cambiar el estilo con CSS</h3>
+            <pre class="codigo"><code>list-style-type: none;          /* sin viñetas */
+list-style-type: square;        /* cuadrados */
+list-style-type: circle;        /* círculos vacíos */
+list-style-type: lower-alpha;   /* a, b, c */
+list-style-type: upper-roman;   /* I, II, III */</code></pre>
+            <div class="resultado">
+                <ol class="romanos">
+                    <li>Introducción</li>
+                    <li>Desarrollo</li>
+                    <li>Conclusión</li>
+                </ol>
+            </div>
+
+            <h3>Una imagen como viñeta</h3>
+            <pre class="codigo"><code>.iconos li {
+    list-style-type: none;
+    background-image: url(../img/check.svg);
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 0.4rem 0 0.4rem 3rem;
+}</code></pre>
+            <div class="resultado">
+                <ul class="iconos">
+                    <li>Ordenar las etiquetas</li>
+                    <li>Cerrar cada etiqueta</li>
+                    <li>Validar el código</li>
+                </ul>
+            </div>
+            <p>Primero se quita la viñeta con <code>list-style-type: none</code>. Después se pone la imagen de fondo, se evita que se repita y se coloca a la izquierda. El <code>padding-left</code> deja hueco para que el texto no se pise con el icono.</p>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> la ruta dentro de <code>url()</code> en el CSS se mide desde el propio fichero CSS, no desde la página HTML.
+            </div>
+            <div class="aviso error">
+                <strong>Error común:</strong> usar <code>&lt;br&gt;</code> o guiones para simular una lista. Usa las etiquetas de lista, que dan significado a los lectores de pantalla.
+            </div>
+
+            <div class="paginacion">
+                <a href="06-menus.html" class="boton">Anterior</a>
+                <a href="08-galeria-efectos.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

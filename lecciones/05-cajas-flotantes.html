@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Cajas flotantes</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="5">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 5 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Cajas flotantes</h2>
+            <p>Para CSS, cada elemento de la página es una caja. Entender cómo se calculan esas cajas es la base de toda la maquetación.</p>
+
+            <h3>El modelo de caja</h3>
+            <pre class="codigo"><code>margin   → espacio exterior, entre esta caja y las demás
+border   → el borde de la caja
+padding  → espacio entre el borde y el contenido
+content  → el contenido (texto, imágenes...)</code></pre>
+            <pre class="codigo"><code>margin: 20px;                /* los cuatro lados */
+margin: 5px 5px 10px 10px;   /* arriba, derecha, abajo, izquierda */
+border: black 2px solid;
+border-radius: 25px;
+padding: 10px;
+padding-left: 10px;</code></pre>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> empieza siempre tu CSS con <code>* { margin: 0; box-sizing: border-box; }</code>. Reinicia los márgenes y hace que el ancho incluya el padding y el borde.
+            </div>
+
+            <h3>La propiedad float</h3>
+            <p>Cuando una caja flota, se desplaza hasta el extremo izquierdo o derecho de su contenedor y las demás se colocan a su lado.</p>
+            <pre class="codigo"><code>float: left;    /* a la izquierda */
+float: right;   /* a la derecha */
+float: none;    /* valor por defecto, sin flotar */</code></pre>
+
+            <div class="columnas">
+                <div>
+                    <p class="rotulo">Código</p>
+                    <pre class="codigo"><code>.izquierda { float: left; }
+.derecha   { float: right; }</code></pre>
+                </div>
+                <div>
+                    <p class="rotulo">Resultado</p>
+                    <div class="demo limpiar">
+                        <span class="demo-caja izquierda">Caja 1</span>
+                        <span class="demo-caja izquierda">Caja 2</span>
+                        <span class="demo-caja derecha">Caja 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>El problema: el contenedor se colapsa</h3>
+            <p>Un contenedor solo contiene a sus hijos que no flotan. Si todos flotan, el contenedor se queda sin altura y su borde se queda en una línea:</p>
+            <div class="demo">
+                <span class="demo-caja izquierda">Caja 1</span>
+                <span class="demo-caja izquierda">Caja 2</span>
+            </div>
+            <p class="aparte">Las cajas se salen de su contenedor: ha perdido la altura.</p>
+
+            <h3>Dos soluciones</h3>
+            <pre class="codigo"><code>/* 1. overflow en el contenedor */
+.limpiar { overflow: hidden; }
+
+/* 2. clear en un elemento que va después */
+.aparte { clear: both; }</code></pre>
+            <p>La primera línea es la que ya aplica la demo de arriba, con <code>.limpiar</code>. La segunda es la que corrige el párrafo situado tras la demo rota, para que no se enrolle alrededor de las cajas. <code>clear</code> admite los valores <code>left</code>, <code>right</code> y <code>both</code>.</p>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> olvidar limpiar los flotantes. Si el fondo o el borde de un contenedor «desaparece» o el texto se mete al lado de las cajas, falta un <code>overflow</code> o un <code>clear</code>.
+            </div>
+
+            <h3>Ejemplo práctico: paginación</h3>
+            <pre class="codigo"><code>&lt;div id="paginacion"&gt;
+    &lt;span class="izquierda"&gt;&amp;laquo; Anterior&lt;/span&gt;
+    &lt;span class="derecha"&gt;Siguiente &amp;raquo;&lt;/span&gt;
+&lt;/div&gt;
+
+#paginacion {
+    border: 1px solid #CCC;
+    background-color: #E0E0E0;
+    padding: .5em;
+    overflow: hidden;
+}</code></pre>
+            <div class="demo-pag"> <!--&laquo; y &raquo; son los caracteres « y ». Dentro de un bloque de código van como &amp;laquo;, para que se muestren como texto-->
+                <span class="izquierda">&laquo; Anterior</span>
+                <span class="derecha">Siguiente &raquo;</span>
+            </div>
+
+            <div class="paginacion">
+                <a href="04-enlaces-imagenes.html" class="boton">Anterior</a>
+                <a href="06-menus.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

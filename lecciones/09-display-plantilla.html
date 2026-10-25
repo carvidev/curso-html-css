@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Galería, efectos y favicon</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="9">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 9 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="#">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Display y plantilla semántica</h2>
+            <p>La propiedad <code>display</code> decide cómo se coloca un elemento respecto a los demás. Hay tres sistemas para maquetar: <code>float</code>, flexbox y grid.</p>
+
+            <h3>block, inline e inline-block</h3>
+            <pre class="codigo"><code>display: block;         /* ocupa toda la línea, admite width y height */
+display: inline;        /* se coloca en la línea, NO admite width ni height */
+display: inline-block;  /* se coloca en la línea, SÍ admite width y height */</code></pre>
+            <div class="resultado">
+                <span class="d-caja d-block">block</span>
+                <span class="d-caja d-block">block</span>
+                <span class="d-caja d-inline">inline</span>
+                <span class="d-caja d-inline">inline</span>
+                <span class="d-caja d-inline-block">inline-block</span>
+                <span class="d-caja d-inline-block">inline-block</span>
+            </div>
+            <p>Los tres tienen <code>width: 20rem</code>, pero el <code>inline</code> la ignora y se ajusta a su contenido. Las etiquetas <code>div</code>, <code>p</code> y <code>h1</code> son <code>block</code> por defecto, y <code>span</code> y <code>a</code> son <code>inline</code>.</p>
+
+            <h3>Float</h3>
+            <pre class="codigo"><code>float: left;    float: right;
+clear: both;    /* para dejar de flotar */</code></pre>
+            <p>Es el sistema clásico, el que viste en la lección 5. Funciona, pero hay que limpiar los flotantes. Hoy se usa sobre todo para que el texto rodee una imagen.</p>
+
+            <h3>Flexbox: diseño flexible en una dimensión</h3>
+            <pre class="codigo"><code>.fila {
+    display: flex;
+    flex-direction: row;            /* o column */
+    justify-content: space-between; /* reparto en el eje principal */
+    align-items: center;            /* alineación en el eje cruzado */
+    gap: .8rem;
+}
+.fila .ancho { flex: 1; }           /* ocupa el espacio sobrante */</code></pre>
+            <div class="resultado d-flex">
+                <span class="d-caja">Uno</span>
+                <span class="d-caja d-ancho">Dos (flex: 1)</span>
+                <span class="d-caja">Tres</span>
+            </div>
+            <div class="resultado d-flex d-flex-col">
+                <span class="d-caja">Uno</span>
+                <span class="d-caja">Dos</span>
+                <span class="d-caja">Tres</span>
+            </div>
+            <p>Flex reparte los elementos a lo largo de un <strong>eje principal</strong>, que es horizontal con <code>row</code> y vertical con <code>column</code>. <code>justify-content</code> los coloca a lo largo de ese eje y <code>align-items</code> en el eje perpendicular.</p>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> pensar que <code>justify-content</code> es siempre horizontal y <code>align-items</code> siempre vertical. Eso solo es así con <code>row</code>. Con <code>column</code>, cada propiedad cambia de eje.
+            </div>
+
+            <h3>Grid: diseño en rejilla de dos dimensiones</h3>
+            <pre class="codigo"><code>.rejilla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);   /* tres columnas iguales */
+    gap: .8rem;
+}
+.rejilla.auto { grid-auto-flow: column; }    /* cada hijo, una columna */</code></pre>
+            <div class="resultado d-grid">
+                <span class="d-caja">1</span>
+                <span class="d-caja">2</span>
+                <span class="d-caja">3</span>
+                <span class="d-caja">4</span>
+                <span class="d-caja">5</span>
+                <span class="d-caja">6</span>
+            </div>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> flexbox para organizar elementos en una fila o en una columna (menús, barras, tarjetas). Grid para estructuras con filas y columnas a la vez (galerías, la página entera).
+            </div>
+
+            <h3>La plantilla semántica de HTML5</h3>
+            <p>HTML5 trae etiquetas que describen la función de cada parte de la página, en lugar de usar <code>div</code> para todo:</p>
+            <pre class="codigo"><code>&lt;body&gt;
+    &lt;header&gt;   Cabecera: logo, título        &lt;/header&gt;
+    &lt;nav&gt;      Menú de navegación            &lt;/nav&gt;
+    &lt;main&gt;
+        &lt;section&gt;  Un bloque con un tema      &lt;/section&gt;
+        &lt;article&gt;  Contenido independiente    &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;aside&gt;    Contenido secundario (lateral) &lt;/aside&gt;
+    &lt;footer&gt;   Pie de página                  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+            <div class="plantilla">
+                <div class="p-cab">header</div>
+                <div class="p-nav">nav</div>
+                <div class="p-main">main (section, article)</div>
+                <div class="p-pie">footer</div>
+            </div>
+            <p>Visualmente se parecen a los <code>div</code>, pero ayudan a los buscadores y a los lectores de pantalla a entender la estructura. Tu propia web ya usa <code>header</code>, <code>nav</code> y <code>main</code>.</p>
+
+            <div class="paginacion">
+                <a href="08-galeria-efectos.html" class="boton">Anterior</a>
+                <a href="#" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
