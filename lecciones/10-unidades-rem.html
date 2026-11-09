@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Unidades Rem</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="10">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 10 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="/lecciones/10-unidades-rem.html">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="#">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Unidades REM</h2>
+            <p>En CSS puedes medir de muchas formas. <code>px</code> es fija, mientras que <code>rem</code> se calcula a partir del tamaño de letra del elemento raíz (<code>html</code>), y por eso se adapta mejor a cada usuario.</p>
+
+            <h3>Qué es un rem</h3>
+            <p>Un <code>rem</code> equivale al tamaño de letra de <code>html</code>. Los navegadores lo ponen por defecto a 16px, así que:</p>
+            <pre class="codigo"><code>1rem   = 16px
+2rem   = 32px
+0.5rem = 8px</code></pre>
+            <p>Está pensado para que las medidas respeten la configuración del usuario. Si alguien aumenta el tamaño de letra de su navegador, todo lo medido en <code>rem</code> crece con él, y lo medido en <code>px</code> no.</p>
+
+            <h3>El truco del 62,5 %</h3>
+            <p>Calcular con 16 es incómodo. Con este ajuste, 1rem pasa a valer 10px y las cuentas se hacen de cabeza:</p>
+            <pre class="codigo"><code>html {
+    box-sizing: border-box;
+    font-size: 62.5%;   /* 62,5 % de 16px = 10px → 1rem = 10px */
+}
+
+body {
+    font-size: 1.6rem;  /* el texto vuelve a medir 16px */
+}
+
+h1 {
+    font-size: 4rem;    /* 40px */
+}</code></pre>
+            <ul>
+                <li><code>html { font-size: 62.5% }</code> hace que 1rem valga 10px.</li>
+                <li><code>body { font-size: 1.6rem }</code> devuelve el texto a 16px. Sin esta línea, toda la página saldría diminuta.</li>
+                <li>Ahora 2.4rem son 24px, 3.2rem son 32px y 0.8rem son 8px.</li>
+            </ul>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> usa un porcentaje en <code>html</code> y no <code>font-size: 10px</code>. El porcentaje respeta el tamaño que el usuario haya elegido en su navegador; los 10px lo ignoran.
+            </div>
+
+            <h3>Tabla de equivalencias</h3>
+            <table class="tabla-rem">
+                <caption>Con html { font-size: 62.5% }</caption>
+                <tr><th>rem</th><th>píxeles</th><th>Uso típico</th></tr>
+                <tr><td>0.8rem</td><td>8px</td><td>Márgenes pequeños</td></tr>
+                <tr><td>1.6rem</td><td>16px</td><td>Texto normal</td></tr>
+                <tr><td>2.4rem</td><td>24px</td><td>Subtítulos</td></tr>
+                <tr><td>4rem</td><td>40px</td><td>Título principal</td></tr>
+            </table>
+            <p>Mira cómo queda en barras. Cada una mide un múltiplo de 10rem:</p>
+            <div class="resultado">
+                <div class="rem-barra" style="width: 10rem">10rem</div>
+                <div class="rem-barra" style="width: 20rem">20rem</div>
+                <div class="rem-barra" style="width: 30rem">30rem</div>
+            </div>
+
+            <h3>rem frente a em</h3>
+    <pre class="codigo"><code>rem → relativo al tamaño de letra de html (la raíz)
+em  → relativo al tamaño de letra del elemento (o de su padre)</code></pre>
+            <div class="resultado">
+                <div class="em-demo">
+                    <span class="em-caja">padding: 1em (cabe con 2rem de letra)</span>
+                </div>
+            </div>
+            <pre class="codigo"><code>.em-demo { font-size: 2rem; }
+.em-caja { padding: 1em; }   /* 1em = 20px, porque el padre mide 2rem */</code></pre>
+            <p>El <code>em</code> se acumula si lo anidas: un <code>em</code> dentro de otro <code>em</code> se multiplica. El <code>rem</code> siempre se calcula desde la raíz, así que es más predecible.</p>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> usar <code>rem</code> dentro de una media query esperando que valga 10px. Allí se mide con el tamaño de letra por defecto del navegador, no con el de tu <code>html</code>. Por eso en las media queries es mejor <code>px</code>.
+            </div>
+
+            <h3>Cuándo usar cada unidad</h3>
+            <ul>
+                <li><strong>rem</strong>: tamaños de letra, márgenes, rellenos y anchos de componentes.</li>
+                <li><strong>px</strong>: bordes finos (<code>1px</code>) y sombras.</li>
+                <li><strong>%</strong>: anchos relativos al contenedor.</li>
+                <li><strong>vh / vw</strong>: relativos al alto o ancho de la ventana.</li>
+            </ul>
+
+            <div class="paginacion">
+                <a href="display-plantilla.html" class="boton">Anterior</a>
+                <a href="11-video-audio.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

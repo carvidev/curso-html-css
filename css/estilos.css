@@ -538,6 +538,77 @@ body {
 .p-main { grid-area: pri; background-color: #FAEEDA; color: #412402; min-height: 10rem; }
 .p-pie { grid-area: pie; background-color: #F5C4B3; color: #712B13; }
 
+/* Unidades REM */
+.tabla-rem {
+    border-collapse: collapse;
+    margin: 1.6rem 0;
+    width: 100%;
+}
+
+.tabla-rem caption {
+    font-size: 1.4rem;
+    color: #5F5EA5;
+    margin-bottom: 0.6rem;
+    text-align: left;
+}
+
+.tabla-rem td {
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #D3D1C7;
+}
+
+.rem-barra {
+    background-color: #9FE1CB;
+    color: #085041;
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+}
+
+.em-demo {
+    font-size: 2rem;
+    background-color: #F1EFE8;
+    border-radius: 0.6rem;
+    display: inline-block;
+}
+
+.em-caja {
+    display: block;
+    padding: 1em; /* vale 1em de su propio tamaño de letra, es decir, 14px. Para que el em se mida con el 2rem del padre habría que dejar la caja sin font-size */
+    font-size: 1.4rem;
+}
+
+/* Vídeo y audio */
+.contenido video,
+.contenido audio {
+    display: block; /* quita el pequeño hueco que dejan los elementos inline por debajo */
+    max-width: 100%; /* evita que un vídeo más ancho que la columna desborde */
+    margin: 1.6rem 0;
+    border-radius: 0.8rem;
+}
+
+.contenido audio {
+    width: 100%;
+}
+
+.video-resposive {
+    aspect-ratio: 16 / 9;
+    margin: 1.6rem 0;
+}
+
+.video-resposive iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 0.8rem;
+}
+
+.contenido progress {
+    width: 100%;
+    height: 1.6rem;
+    margin: 1.2rem 0;
+}
 
 /* Media queries - diseño responsive */
 @media (max-width: 700px) { /* Estas reglas solo se aplican cuando la ventana mide 700px o menos de ancho.

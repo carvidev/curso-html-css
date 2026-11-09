@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Vídeo, audio y iframe</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="11">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 11 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="10-unidades-rem.html">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="11-video-audio.html">11. Vídeo, audio e iframe</a></li>
+                <li><a href="#">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Vídeo, audio e iframe</h2>
+            <p>HTML5 permite insertar vídeo y audio sin ningún plugin, y con <code>iframe</code> puedes incrustar contenido de otras webs, como YouTube o Google Maps.</p>
+
+            <h3>Vídeo</h3>
+    <pre class="codigo"><code>&lt;video controls poster="../img/paisaje.jpg"&gt;
+    &lt;source src="../video/intro.mp4" type="video/mp4"&gt;
+    &lt;source src="../video/intro.webm" type="video/webm"&gt;
+    Tu navegador no puede reproducir este vídeo.
+&lt;/video&gt;</code></pre>
+            <video controls poster="../img/paisaje.jpg">
+                <source src="../video/intro.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este vídeo.
+            </video>
+            <ul>
+                <li><code>controls</code> muestra los botones de reproducir, pausa y volumen.</li>
+                <li><code>poster</code> es la imagen que se ve antes de reproducir.</li>
+                <li><code>source</code> permite ofrecer varios formatos. El navegador usa el primero que entienda.</li>
+                <li>El texto entre las etiquetas solo se ve si el navegador no admite <code>video</code>.</li>
+            </ul>
+
+            <h3>Atributos útiles</h3>
+            <pre class="codigo"><code>autoplay   /* empieza solo */
+muted      /* sin sonido */
+loop       /* se repite sin parar */
+playsinline /* en iPhone no se abre a pantalla completa */</code></pre>
+            <div class="aviso error">
+                <strong>Error común:</strong> poner <code>autoplay</code> sin <code>muted</code>. Los navegadores bloquean los vídeos que arrancan solos con sonido, así que no se reproducen. Para un vídeo de fondo usa los tres juntos: <code>autoplay muted loop</code>.
+            </div>
+
+            <h3>Audio</h3>
+            <pre class="codigo"><code>&lt;audio controls&gt;
+    &lt;source src="../audio/musica.mp3" type="audio/mpeg"&gt;
+    Tu navegador no puede reproducir este audio.
+&lt;/audio&gt;</code></pre>
+            <audio controls>
+                <source src="../audio/musica.mp3" type="audio/mpeg">
+                Tu navegador no puede reproducir este audio.
+            </audio>
+            <p>El tipo correcto para MP3 es <code>audio/mpeg</code>, no <code>audio/mp3</code> como aparece en los apuntes. Y por el mismo motivo de antes, el audio con <code>autoplay</code> también se bloquea en casi todos los navegadores. Es mejor dejar los controles y que el usuario decida.</p>
+
+            <h3>Vídeo de YouTube con iframe</h3>
+            <p>Un <code>iframe</code> encaja una página dentro de otra. Para YouTube, usa el botón Compartir → Insertar del propio vídeo y copia su código:</p>
+            <pre class="codigo"><code>&lt;iframe src="https://www.youtube.com/embed/FzgPp3Fte98"
+                title="Vídeo de YouTube"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/FzgPp3Fte98"
+                        title="Vídeo de YouTube"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            <p>El atributo <code>title</code> es importante para la accesibilidad. El <code>frameborder="0"</code> de los apuntes está obsoleto: se quita el borde con CSS (<code>border: 0</code>).</p>
+
+            <h3>Mapa de Google</h3>
+            <p>Busca un lugar en Google Maps, pulsa Compartir → Insertar un mapa y copia el código. Quedará con esta forma:</p>
+            <pre class="codigo"><code>&lt;iframe src="https://www.google.com/maps/embed?pb=..."
+                title="Mapa de mi localidad"
+                loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+            <p>Los puntos suspensivos los sustituye el enlace que te da Google. <code>loading="lazy"</code> hace que el mapa no se cargue hasta que el usuario llega a esa parte de la página.</p>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> para que un iframe se adapte al ancho sin deformarse, ponlo dentro de un contenedor con <code>aspect-ratio: 16 / 9</code> y dale al iframe <code>width: 100%; height: 100%</code>.
+            </div>
+
+            <h3>Dos extras de HTML5</h3>
+            <pre class="codigo"><code>&lt;picture&gt;
+    &lt;source media="(min-width: 700px)" srcset="../img/paisaje.jpg"&gt;
+    &lt;img src="../img/paisaje.jpg" alt="Paisaje"&gt;
+&lt;/picture&gt;
+
+&lt;progress value="60" max="100"&gt;60%&lt;/progress&gt;</code></pre>
+            <p><code>picture</code> elige una imagen según la pantalla (útil para ofrecer una versión pequeña en el móvil, con una ruta distinta en <code>srcset</code>). <code>progress</code> dibuja una barra de progreso nativa:</p>
+            <progress value="60" max="100">60%</progress>
+
+            <div class="paginacion">
+                <a href="unidades-rem.html" class="boton">Anterior</a>
+                <a href="#" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
