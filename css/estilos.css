@@ -610,6 +610,107 @@ body {
     margin: 1.2rem 0;
 }
 
+/* Fuentes de texto */
+.retro {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+.elegante {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-top: 1.2rem;
+}
+
+/* Sombras, degradados y cursores */
+.s-fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.s-caja {
+    padding: 2rem 2.4rem;
+    border-radius: 0.8rem;
+    background-color: #EEEDFE;
+    color: #26215C;
+}
+
+.s-uno { box-shadow: 8px 8px 0 #26215C; }
+.s-dos { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);}
+
+.s-titulo {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    padding: 0.4rem 1 rem;
+}
+
+.s-texto-uno{ text-shadow: 3px 3px 4px #f099f0;}
+
+.s-texto-dos {
+    color: white;
+    background-color: #26215C;
+    text-shadow: 0 0 8px #AFA9EC, 0 0 16px #7F77DD;
+}
+
+.s-radio { border-radius: 1rem 0 3rem 0; }
+
+.s-circulo {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background-color: #9FE1CB;
+    color: #085041;
+    display: grid;
+    place-items: center;
+}
+
+.s-borde {
+    border: 1rem solid transparent;
+    border-image: linear-gradient(45deg, #534AB7, #1D9E75);
+    border-radius: 0;
+}
+
+.g-barra {
+    height: 6rem;
+    border-radius: 0.8rem;
+    margin: 1rem 0;
+}
+
+.g-lineal { background-image: linear-gradient(to right, #534AB7, white, #1D9E75); }
+.g-radial { background-image: radial-gradient(#EF9F27, white); }
+.g-franjas {
+    background: linear-gradient(to right,
+        #E24B4A 20%, #EF9F27 20% 40%, #FAC775 40% 60%, #1D9E75 60% 80%, #378ADD 80%);
+}
+
+.sobre {
+    background-image: 
+        linear-gradient(to right, transparent 50%, #534AB7 50%),
+        url(../img/paisaje.jpg);
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat;
+    padding: 6rem 0;
+    margin: 1.6rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.sobre h2 {
+    grid-column: 2 / 3;
+    text-align: center;
+    color: white;
+    margin: 0;
+}
+
+.c-help { cursor: help; }
+.c-cruz { cursor: crosshair; }
+.c-no { cursor: not-allowed; }
+.c-mano { cursor: grab; }
+
 /* Media queries - diseño responsive */
 @media (max-width: 700px) { /* Estas reglas solo se aplican cuando la ventana mide 700px o menos de ancho.
 Van al final por la cascada: si dos reglas tienen la misma especificidad, gana la última. Si la pones antes de .contenedor, no tendría efecto.

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Sombras, degradados y cursores</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="13">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 13 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="10-unidades-rem.html">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="11-video-audio.html">11. Vídeo, audio e iframe</a></li>
+                <li><a href="12-fuentes-texto.html">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Sombras, degradados y cursores</h2>
+            <p>Tres efectos muy visuales que se consiguen con una sola línea de CSS: sombras, mezclas de color y cursores personalizados.</p>
+
+            <h3>Sombras en cajas y en texto</h3>
+            <pre class="codigo"><code>box-shadow:  -5px 5px 5px black;
+text-shadow:  2px 2px 4px blue;
+/*           eje X, eje Y, desenfoque, color */</code></pre>
+            <ul>
+                <li>Eje X: positivo desplaza la sombra a la derecha, negativo a la izquierda.</li>
+                <li>Eje Y: positivo la baja, negativo la sube.</li>
+                <li>Desenfoque: cuanto mayor, más difuminada. Con 0 es un borde nítido.</li>
+                <li>Color: mejor con transparencia, como <code>rgba(0, 0, 0, 0.3)</code>, para que quede natural.</li>
+            </ul>
+            <div class="s-fila">
+                <div class="s-caja s-uno">Sombra dura</div>
+                <div class="s-caja s-dos">Sombra suave</div>
+            </div>
+            <p class="s-titulo s-texto-uno">Título con sombra de color</p>
+            <p class="s-titulo s-texto-dos">Título con efecto neón</p>
+    <pre class="codigo"><code>.s-uno { box-shadow: 8px 8px 0 #26215C; }
+.s-dos { box-shadow: 0 8px 24px rgba(0, 0, 0, .25); }
+.s-texto-uno { text-shadow: 3px 3px 4px #F0997B; }
+.s-texto-dos { color: #fff; background: #26215C;
+    text-shadow: 0 0 8px #AFA9EC, 0 0 16px #7F77DD; }</code></pre>
+            <p>Con <code>text-shadow</code> y <code>box-shadow</code> puedes poner varias sombras separadas por comas, como en el efecto neón.</p>
+
+            <h3>Bordes redondeados y bordes con imagen</h3>
+            <pre class="codigo"><code>border-radius: 25px;              /* los cuatro lados */
+border-radius: 10px 0 30px 0;     /* arriba-izq, arriba-der, abajo-der, abajo-izq */
+border-radius: 50%;               /* círculo si la caja es cuadrada */
+
+border: 1rem solid transparent;
+border-image: linear-gradient(45deg, #534AB7, #1D9E75) 1;</code></pre>
+            <div class="s-fila">
+                <div class="s-caja s-radio">Radios distintos</div>
+                <div class="s-circulo">Círculo</div>
+                <div class="s-caja s-borde">Borde con degradado</div>
+            </div>
+            <p>Con <code>border-image</code> puedes usar una imagen o un degradado como borde. El <code>1</code> final indica cómo se recorta. Un borde con imagen y <code>border-radius</code> no se llevan bien: el redondeo no se aplica al borde.</p>
+
+            <h3>Degradados</h3>
+            <pre class="codigo"><code>background-image: linear-gradient(to left, green, white, black);
+background-image: radial-gradient(orange, white);
+background: linear-gradient(to right,
+    red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%);</code></pre>
+            <ul>
+                <li><strong>linear</strong>: va en una dirección. Se indica con <code>to left</code>, <code>to right</code>, <code>to top</code>, <code>to bottom</code> o en grados (<code>45deg</code>).</li>
+                <li><strong>radial</strong>: parte de un punto central hacia fuera.</li>
+                <li>Los porcentajes marcan dónde empieza y acaba cada color. Si dos colores comparten porcentaje, se ve un corte nítido y no un degradado.</li>
+            </ul>
+            <div class="g-barra g-lineal"></div>
+            <div class="g-barra g-radial"></div>
+            <div class="g-barra g-franjas"></div>
+
+            <h3>Degradado con imagen y texto</h3>
+            <p>Combina un degradado y una imagen en el mismo fondo. La imagen se ve a la izquierda y el color sólido a la derecha, con un título encima:</p>
+            <pre class="codigo"><code>&lt;div class="sobre"&gt;
+    &lt;h2&gt;Muebles por encargo&lt;/h2&gt;
+&lt;/div&gt;
+
+.sobre {
+    background-image:
+        linear-gradient(to right, transparent 50%, #534AB7 50%),
+        url(../img/paisaje.jpg);
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat;
+    padding: 6rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.sobre h2 {
+    grid-column: 2 / 3;
+    text-align: center;
+    color: white;
+}</code></pre>
+            <div class="sobre">
+                <h2>Bloque a un lado</h2>
+            </div>
+            <p>Las capas de <code>background-image</code> se apilan: la primera queda encima. Por eso el degradado va delante, y <code>background-size</code> lleva un valor para cada capa, en el mismo orden.</p>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> poner la imagen antes que el degradado. Al quedar la imagen encima, el degradado ni se ve.
+            </div>
+
+            <h3>Cursores del ratón</h3>
+            <pre class="codigo"><code>h1 { cursor: help; }
+a  { cursor: pointer; }
+
+/* Un cursor propio, con uno normal como respaldo */
+body { cursor: url('../img/cursor.png'), auto; }</code></pre>
+            <p>Pasa el ratón por encima de cada caja:</p>
+            <div class="s-fila">
+                <div class="s-caja c-help">help</div>
+                <div class="s-caja c-cruz">crosshair</div>
+                <div class="s-caja c-no">not-allowed</div>
+                <div class="s-caja c-mano">grab</div>
+            </div>
+            <p>Algunos valores habituales son <code>pointer</code> (la manita de los enlaces), <code>text</code>, <code>wait</code>, <code>move</code>, <code>zoom-in</code>, <code>grab</code> y <code>not-allowed</code>. Para uno propio, usa una imagen pequeña en <code>.png</code> o <code>.cur</code>, de 32x32 píxeles como máximo, y deja siempre un cursor normal de respaldo al final.</p>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> usa <code>cursor: pointer</code> en cualquier elemento que se pueda pulsar y no sea un enlace o un botón. Así el usuario sabe que es clicable.
+            </div>
+
+            <div class="paginacion">
+                <a href="12-fuentes-texto.html " class="boton">Anterior</a>
+                <a href="#" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

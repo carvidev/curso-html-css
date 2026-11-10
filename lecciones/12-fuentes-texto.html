@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Fuentes de texto</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="12">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 12 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="10-unidades-rem.html">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="11-video-audio.html">11. Vídeo, audio e iframe</a></li>
+                <li><a href="12-fuentes-texto.html">12. Fuentes de texto</a></li>
+                <li><a href="#">13. Sombras, degradados y cursores</a></li>
+                <li><a href="#">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="#">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Fuentes de texto</h2>
+            <p>La tipografía da personalidad a una web. Puedes usar las fuentes que ya tiene el ordenador del usuario, fuentes de Google o tus propios ficheros.</p>
+
+            <h3>font-family y las fuentes de respaldo</h3>
+            <pre class="codigo"><code>p {
+    font-family: Arial, Helvetica, sans-serif;
+}</code></pre>
+            <p>Se escribe una lista de fuentes separadas por comas. El navegador usa la primera que tenga y, si no, pasa a la siguiente. La última debe ser siempre una familia genérica: <code>sans-serif</code>, <code>serif</code>, <code>monospace</code> o <code>cursive</code>.</p>
+
+            <h3>A. Fuentes online: Google Fonts</h3>
+            <ol>
+                <li>Entra en <a href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">fonts.google.com</a> y elige una fuente.</li>
+                <li>Pulsa «Get font» y «Get embed code».</li>
+                <li>Copia las etiquetas <code>link</code> en el <code>head</code> de tu página.</li>
+                <li>Copia la regla <code>font-family</code> que te da Google en tu CSS.</li>
+            </ol>
+            <pre class="codigo"><code>&lt;head&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap"
+        rel="stylesheet"&gt;
+&lt;/head&gt;
+
+.retro {
+    font-family: 'Press Start 2P', monospace;
+}</code></pre>
+            <div class="resultado">
+                <p class="retro">Así quedaría nuestro texto con otra fuente.</p>
+                <h4 class="elegante">Un título con otra fuente</h4>
+            </div>
+            <ul>
+                <li><code>preconnect</code> avisa al navegador de que va a pedir recursos a esos dominios, para que ganen tiempo. En <code>fonts.gstatic.com</code> hace falta <code>crossorigin</code>.</li>
+                <li><code>display=swap</code> muestra el texto con una fuente de respaldo mientras se descarga la tuya, en lugar de dejarlo invisible.</li>
+                <li>Si pides varios pesos, como <code>wght@400;700</code>, se descargan más datos. Pide solo los que uses.</li>
+            </ul>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> aplicar la fuente con <code>* { font-family: ... }</code> y con <code>cursive</code> como respaldo, como en los apuntes. Afecta a absolutamente todo y, si la fuente falla, el respaldo no se parece a ella. Aplícala con una clase o a <code>body</code>, y elige un respaldo parecido (<code>monospace</code> para una fuente de estilo píxel).
+            </div>
+
+            <h3>B. Fuentes offline: @font-face</h3>
+            <p>También puedes usar un fichero de fuente guardado en tu proyecto, sin depender de ninguna conexión. Descarga una fuente (por ejemplo de <a href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Google Fonts</a> o DaFont), guárdala en una carpeta <code>fonts/</code> y declárala en el CSS:</p>
+            <pre class="codigo"><code>@font-face {
+    font-family: "MiFuente";
+    src: url("../fonts/mifuente.woff2") format("woff2");
+    font-display: swap;
+}
+
+.titulo-propio {
+    font-family: "MiFuente", sans-serif;
+    font-size: 5rem;
+}</code></pre>
+            <p><code>@font-face</code> inventa un nombre para la fuente (<code>font-family</code>) y le dice de dónde cargarla (<code>src</code>). Después usas ese nombre como cualquier otra. Prefiere el formato <code>.woff2</code>, que es el más ligero. Otros como <code>.ttf</code> también funcionan.</p>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> como en el CSS, la ruta dentro de <code>url()</code> se mide desde el fichero <code>.css</code>, por eso lleva <code>../</code>: sales de <code>css/</code> y entras en <code>fonts/</code>.
+            </div>
+
+            <h3>Reparte las fuentes por función</h3>
+            <p>Una web cuidada usa pocas fuentes, cada una con su papel:</p>
+    <pre class="codigo"><code>body    { font-family: system-ui, sans-serif; }      /* texto */
+h1, h2  { font-family: 'Playfair Display', serif; }  /* títulos */
+.menu   { font-family: 'Press Start 2P', monospace; } /* menú */</code></pre>
+            <p>Con dos o tres fuentes es suficiente. Cada una más es una descarga extra, y muchas mezcladas hacen que la web parezca caótica.</p>
+
+            <div class="paginacion">
+                <a href="11-video-audio.html" class="boton">Anterior</a>
+                <a href="13-sombras-degradados.html" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
