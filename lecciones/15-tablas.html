@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Tablas</title>
+    <link rel="stylesheet" href="../css/estilos.css"> <!--Esta página está un nivel más abajo dentro de la carpeta "lecciones" asi que para que se enlacen los estilos ponemos al principio ../-->
+    <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+    <script defer src="../js/main.js"></script>
+</head>
+<body data-leccion="15">
+
+    <header class="cabecera"> 
+        <div class="fila">
+            <h1>Aprende HTML y CSS</h1>
+            <span class="etiqueta">Lección 15 de 22</span>
+        </div>
+        <div class="progreso">
+            <div class="barra"></div>
+        </div>
+    </header>
+
+    <div class="contenedor">
+        <nav class="menu" aria-label="Lecciones"> <!--<nav> es la etiqueta semántica para la navegación. aria-label ayuda a los lectores de pantalla a saber de qué menú se trata-->
+            <h2>Bloque 1 · Primeros pasos</h2>
+            <ul> <!--Los enlaces van dentro de una lista ul > li > a. Es la estructura estándar de un menú-->
+                <li><a href="../index.html">1. Qué es HTML</a></li>
+                <li><a href="02-etiquetas-basicas.html">2. Etiquetas básicas</a></li>
+                <li><a href="03-css-hojas-de-estilo.html">3. CSS: hojas de estilo</a></li>
+                <li><a href="04-enlaces-imagenes.html">4. Enlaces e imágenes</a></li>
+            </ul>
+            <h2>Bloque 2 · Maquetación</h2>
+            <ul>
+                <li><a href="05-cajas-flotantes.html">5. Cajas flotantes</a></li>
+                <li><a href="06-menus.html">6. Menús</a></li>
+                <li><a href="07-listas.html">7. Listas</a></li>
+                <li><a href="08-galeria-efectos.html">8. Galería, efectos y favicon</a></li>
+                <li><a href="09-display-plantilla.html">9. Display y plantilla semántica</a></li>
+                <li><a href="10-unidades-rem.html">10. Unidades REM</a></li>
+            </ul>
+            <h2>Bloque 3 · Diseño y multimedia</h2>
+            <ul>
+                <li><a href="11-video-audio.html">11. Vídeo, audio e iframe</a></li>
+                <li><a href="12-fuentes-texto.html">12. Fuentes de texto</a></li>
+                <li><a href="13-sombras-degradados.html">13. Sombras, degradados y cursores</a></li>
+                <li><a href="14-carrusel.html">14. Carrusel de imágenes</a></li>
+            </ul>
+            <h2>Bloque 4 · Datos y formularios</h2>
+            <ul>
+                <li><a href="15-tablas.html">15. Tablas</a></li>
+                <li><a href="#">16. Formularios</a></li>
+            </ul>
+            <h2>Bloque 5 · Efectos y responsive</h2>
+            <ul>
+                <li><a href="#">17. Imagen y vídeo de fondo</a></li>
+                <li><a href="#">18. Pseudoclases y columnas</a></li>
+                <li><a href="#">19. One page scroll</a></li>
+                <li><a href="#">20. Media queries</a></li>
+                <li><a href="#">21. DOM con JavaScript</a></li>
+                <li><a href="#">22. Animaciones keyframes</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido">
+            <h2>Tablas</h2>
+            <p>Una tabla organiza datos en filas y columnas. Úsala solo para eso: datos que se leen mejor en cuadrícula, como precios, horarios o comparativas.</p>
+
+            <h3>Estructura básica</h3>
+            <pre class="codigo"><code>&lt;table&gt;
+    &lt;caption&gt;Lenguajes más usados&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Posición&lt;/th&gt;
+        &lt;th&gt;Lenguaje&lt;/th&gt;
+        &lt;th&gt;Uso&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;JavaScript&lt;/td&gt;
+        &lt;td&gt;Web&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- más filas --&gt;
+&lt;/table&gt;</code></pre>
+            <ul>
+                <li><code>table</code> es la tabla entera y <code>caption</code> su título.</li>
+                <li><code>tr</code> (table row) es una fila.</li>
+                <li><code>th</code> (table header) es una celda de cabecera. Va en negrita y centrada por defecto.</li>
+                <li><code>td</code> (table data) es una celda de datos.</li>
+            </ul>
+            <div class="tabla-scroll">
+                <table class="tabla">
+                    <caption>Tabla: lenguajes más usados (datos de ejemplo)</caption>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Lenguaje</th>
+                        <th>Uso</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>JavaScript</td>
+                        <td>Web</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Python</td>
+                        <td>Datos y scripts</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Java</td>
+                        <td>Aplicaciones</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>El CSS de la tabla</h3>
+            <pre class="codigo"><code>.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid #26215C;
+    background-image: linear-gradient(to bottom, rgba(83, 74, 183, .25), white);
+    caption-side: bottom;
+}
+.tabla caption { margin: 1rem; }
+.tabla th {
+    background-color: #26215C;
+    color: white;
+    padding: 1rem;
+    text-transform: uppercase;
+}
+.tabla td {
+    padding: 1rem;
+    text-align: center;
+}</code></pre>
+            <ul>
+                <li><code>border-collapse: collapse</code> fusiona los bordes de las celdas en uno solo. Sin ella, cada celda tiene su borde y queda un hueco doble.</li>
+                <li><code>caption-side: bottom</code> pone el título debajo de la tabla.</li>
+                <li>El <code>padding</code> va en las celdas y no en la tabla: así respiran.</li>
+                <li>El degradado de fondo es el mismo de la lección 13, aplicado a la tabla entera.</li>
+            </ul>
+
+            <div class="aviso error">
+                <strong>Error común:</strong> usar tablas para maquetar la página (columnas, menús, cabecera). Es una práctica antigua que daña la accesibilidad y no se adapta al móvil. Para eso están flexbox y grid.
+            </div>
+
+            <h3>Cabecera, cuerpo y pie</h3>
+            <p>En tablas largas conviene agrupar las filas según su función. Los navegadores y los lectores de pantalla las distinguen.</p>
+            <pre class="codigo"><code>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th scope="col"&gt;Producto&lt;/th&gt;&lt;th scope="col"&gt;Precio&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Cuaderno&lt;/td&gt;&lt;td&gt;3 €&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Bolígrafo&lt;/td&gt;&lt;td&gt;1 €&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;&lt;th scope="row"&gt;Total&lt;/th&gt;&lt;td&gt;4 €&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+            <div class="tabla-scroll">
+                <table class="tabla tabla-rayas">
+                    <thead>
+                        <tr><th scope="col">Producto</th><th scope="col">Precio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Cuaderno</td><td>3 €</td></tr>
+                        <tr><td>Bolígrafo</td><td>1 €</td></tr>
+                        <tr><td>Carpeta</td><td>2 €</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr><th scope="row">Total</th><td>6 €</td></tr>
+                    </tfoot>
+                </table>
+            </div>
+            <p>El atributo <code>scope</code> dice si un <code>th</code> es la cabecera de una columna (<code>col</code>) o de una fila (<code>row</code>). Es una ayuda para la accesibilidad.</p>
+            <pre class="codigo"><code>.tabla-rayas tbody tr:nth-child(even) { background-color: rgba(83, 74, 183, .12); }
+.tabla-rayas tr:hover td { background-color: #EEEDFE; }</code></pre>
+            <p>Las pseudoclases de la lección 6 sirven aquí para pintar filas alternas (<code>nth-child(even)</code>) y resaltar la fila bajo el ratón.</p>
+
+            <h3>Combinar celdas</h3>
+            <pre class="codigo"><code>colspan="2"   /* la celda ocupa dos columnas */
+rowspan="2"   /* la celda ocupa dos filas */</code></pre>
+            <pre class="codigo"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;Sistema&lt;/th&gt;
+        &lt;th colspan="2"&gt;Cuota&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;2020&lt;/th&gt;
+        &lt;th&gt;2024&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Android&lt;/td&gt;&lt;td&gt;40 %&lt;/td&gt;&lt;td&gt;45 %&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+            <div class="tabla-scroll">
+                <table class="tabla">
+                    <tr>
+                        <th rowspan="2">Sistema</th>
+                        <th colspan="2">Cuota</th>
+                    </tr>
+                    <tr>
+                        <th>2020</th>
+                        <th>2024</th>
+                    </tr>
+                    <tr>
+                        <td>Android</td>
+                        <td>40 %</td>
+                        <td>45 %</td>
+                    </tr>
+                    <tr>
+                        <td>iOS</td>
+                        <td>30 %</td>
+                        <td>28 %</td>
+                    </tr>
+                    <tr>
+                        <td>Otros</td>
+                        <td>30 %</td>
+                        <td>27 %</td>
+                    </tr>
+                </table>
+            </div>
+            <p>Las cuotas son inventadas, solo sirven de ejemplo. Al combinar celdas, las filas siguientes tienen <strong>menos</strong> celdas, porque las que quedan tapadas no se escriben.</p>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> antes de escribir el HTML, dibuja la tabla en papel con las celdas combinadas. Cuenta cuántas celdas hay en cada fila: así no te equivocas con los <code>colspan</code> y <code>rowspan</code>.
+            </div>
+
+            <h3>Imágenes dentro de una tabla</h3>
+            <p>Cualquier contenido cabe en una celda: texto, enlaces o imágenes. Es la base de las tablas comparativas de productos:</p>
+            <pre class="codigo"><code>&lt;td&gt;&lt;img src="../img/paisaje.jpg" alt="Foto del producto"&gt;&lt;/td&gt;</code></pre>
+            <div class="tabla-scroll">
+                <table class="tabla tabla-img">
+                    <caption>Comparativa de ejemplo</caption>
+                    <thead>
+                        <tr><th></th><th scope="col">Modelo A</th><th scope="col">Modelo B</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Foto</th>
+                            <td><img src="../img/movil1.jpg" alt="Foto del modelo A"></td>
+                            <td><img src="../img/movil2.jpg" alt="Foto del modelo B"></td>
+                        </tr>
+                        <tr><th scope="row">Pantalla</th><td>6,1"</td><td>6,7"</td></tr>
+                        <tr><th scope="row">Memoria</th><td>128 GB</td><td>256 GB</td></tr>
+                        <tr><th scope="row">Batería</th><td>3.200 mAh</td><td>4.500 mAh</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="aviso truco">
+                <strong>Truco:</strong> envuelve cada tabla en un <code>div</code> con <code>overflow-x: auto</code>. Si la tabla es más ancha que el móvil, se desliza en horizontal en lugar de romper la página. Las demos de esta lección ya lo llevan.
+            </div>
+
+            <div class="paginacion">
+                <a href="14-carrusel.html" class="boton">Anterior</a>
+                <a href="#" class="boton primario">Siguiente</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
